@@ -1,11 +1,13 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 
 function MovieCard({films}){
-    return(
+  const navigate=useNavigate()
+  return(
     <div>
-    <Card style={{ width: '18rem' ,marginTop:"20px"}}>
+    <Card style={{ width: '18rem' ,marginTop:"20px"}}onClick={()=>navigate(`/movie/${films.id}`)}>
   <Card.Img variant="top" src={films.posterURL}/>
   <Card.Body>
     <Card.Title>{films.title}</Card.Title>
@@ -15,6 +17,7 @@ function MovieCard({films}){
       <Card.Text>
       Rate : {films.rate}
     </Card.Text>
+  <Button>trailer</Button>
   </Card.Body>
 </Card>
     </div>
